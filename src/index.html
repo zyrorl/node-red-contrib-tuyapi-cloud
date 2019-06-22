@@ -79,7 +79,35 @@
 </script>
 
 <script type="text/x-red" data-help-name="tuyapi-cloud-configuration">
-  <p>Configuration for broadlink devices.</p>
+  <p>Tuya API Cloud Configuration</p>
+  <h3>Configuration Fields</h3>
+  <dl class="message-properties">
+    <dt>Name</dt>
+    <dd> Description of the configuration set </dd>
+    <dt>Key</dt>
+    <dd> API Key Id (see <a href="https://github.com/nalajcie/tuya-sign-hacking#clientidappsecret">here how to obtain)</a></dd>
+    <dt>Secret</dt>
+    <dd> API Secret (see <a href="https://github.com/nalajcie/tuya-sign-hacking#clientidappsecret">here how to obtain)</a></dd>
+    <dt>Secret2</dt>
+    <dd> Secret token  (see <a href="https://github.com/nalajcie/tuya-sign-hacking#secret-token-from-the-bmp-file">here how to obtain)</a></dd>
+    <dt>Certificate Signature</dt>
+    <dd> Used to sign requests to Tuya Cloud API (see <a href="https://github.com/nalajcie/tuya-sign-hacking#make-app-debuggable">here how to obtain</a>) </dd>
+    <dt>API Version</dt>
+    <dd> Version of the API (defaults to 0.0.1)</dd>
+    <dt>Region</dt>
+    <dd> Select the region for the account registered with TuyaSmart (Asia/America/Europe).</dd>
+    <dt>Email</dt>
+    <dd> Registered email with TuyaSmart</dd>
+    <dt>Password</dt>
+    <dd> Password for the account registered with TuyaSmart </dd>
+  </dl>
+  
+  <h3>References</h3>
+  <ul>
+    <li><a href="https://github.com/TuyaAPI/cloud">TuyaAPI Cloud NodeJS Wrapper docs</a> - The NodeJS library used by this project for talking to the Tuya Cloud API</li>
+    <li><a href="https://github.com/nalajcie/tuya-sign-hacking">Tuya Cloud API Signing Docs</a> - Documentation on how to get the API parameters for signing requests</li>
+    <li><a href="https://docs.tuya.com/en/cloudapi/appAPI/index.html">Tuya Cloud API docs</a> - Official Tuya API documentation</li>
+  </ul>  
 </script>
 
 <script type="text/x-red" data-template-name="tuyapi-cloud-request">
