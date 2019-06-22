@@ -1,6 +1,6 @@
 # node-red-contrib-tuyapi-cloud
 
-![NPM version](https://badge.fury.io/js/node-red-contrib-tuyapi-cloud.svg)
+[![NPM version](https://badge.fury.io/js/node-red-contrib-tuyapi-cloud.svg)](https://www.npmjs.com/package/node-red-contrib-tuyapi-cloud)
 
 This module allows users to control and query Tuya Smart Devices using Node-RED through the Tuya Cloud API. It uses the [@tuyapi/cloud](https://www.npmjs.com/package/@tuyapi/cloud) library to communicate with the Tuya Cloud API.
 
