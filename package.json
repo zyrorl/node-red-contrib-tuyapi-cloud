@@ -1,11 +1,12 @@
 {
   "name": "node-red-contrib-tuyapi-cloud",
-  "version": "0.1.0",
+  "version": "0.0.0",
   "description": "TuyaSmart Device Cloud API Node-RED module",
   "license": "MIT",
   "main": "build/",
   "keywords": [
-    "tuya"
+    "tuya",
+    "node-red"
   ],
   "scripts": {
     "build": "rsync -am  ./src/* ./build --exclude '*.ts' && tsc",
