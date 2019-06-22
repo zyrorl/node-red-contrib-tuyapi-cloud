@@ -2,8 +2,17 @@
   "name": "node-red-contrib-tuyapi-cloud",
   "version": "0.1.1",
   "description": "TuyaSmart Device Cloud API Node-RED module",
+  "author": "Abilio Henrique <admin@zyrorl.com>",
   "license": "MIT",
   "main": "build/",
+  "homepage": "https://github.com/zyrorl/node-red-contrib-tuyapi-cloud/",
+  "bugs": {
+    "url": "https://github.com/zyrorl/node-red-contrib-tuyapi-cloud/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:zyrorl/node-red-contrib-tuyapi-cloud.git"
+  },
   "keywords": [
     "tuya",
     "node-red"
@@ -13,15 +22,14 @@
     "preversion": "npm run build && changelog-verify CHANGELOG.md",
     "version": "version-changelog CHANGELOG.md && git add CHANGELOG.md"
   },
-  "author": "Abilio Henrique <admin@zyrorl.com>",
-  "dependencies": {
-    "@tuyapi/cloud": "^0.4.1",
-    "lodash": "^4.17.11"
-  },
   "node-red": {
     "nodes": {
       "tuya-device": "build/index.js"
     }
+  },
+  "dependencies": {
+    "@tuyapi/cloud": "^0.4.1",
+    "lodash": "^4.17.11"
   },
   "devDependencies": {
     "@temando/tsconfig": "^1.0.1",
