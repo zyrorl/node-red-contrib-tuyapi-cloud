@@ -11,7 +11,7 @@
   "scripts": {
     "build": "rsync -am  ./src/* ./build --exclude '*.ts' && tsc",
     "preversion": "npm run build && changelog-verify CHANGELOG.md",
-    "postversion": "version-changelog CHANGELOG.md && git add CHANGELOG.md"
+    "version": "version-changelog CHANGELOG.md && git add CHANGELOG.md"
   },
   "author": "Abilio Henrique <admin@zyrorl.com>",
   "dependencies": {
