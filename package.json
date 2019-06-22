@@ -1,0 +1,38 @@
+{
+  "name": "node-red-contrib-tuyapi-cloud",
+  "version": "0.0.0",
+  "description": "TuyaSmart Device Cloud API Node-RED module",
+  "license": "MIT",
+  "main": "build/",
+  "keywords": [
+    "tuya"
+  ],
+  "scripts": {
+    "build": "rsync -am  ./src/* ./build --exclude '*.ts' && tsc",
+    "preversion": "changelog-verify CHANGELOG.md",
+    "postversion": "version-changelog CHANGELOG.md && git add CHANGELOG.md"
+  },
+  "author": "Abilio Henrique <admin@zyrorl.com>",
+  "dependencies": {
+    "@tuyapi/cloud": "^0.4.1",
+    "lodash": "^4.17.11"
+  },
+  "node-red": {
+    "nodes": {
+      "tuya-device": "build/index.js"
+    }
+  },
+  "devDependencies": {
+    "@temando/tsconfig": "^1.0.1",
+    "@types/jest": "^24.0.13",
+    "@types/node": "^12.0.8",
+    "changelog-verify": "^1.1.2",
+    "jest": "^24.8.0",
+    "ts-jest": "^24.0.2",
+    "ts-node": "^8.2.0",
+    "tslint": "^5.18.0",
+    "tslint-config-temando": "^1.6.1",
+    "typescript": "^3.5.2",
+    "version-changelog": "^3.1.1"
+  }
+}

@@ -1,0 +1,128 @@
+<script type="text/javascript">
+  RED.nodes.registerType('tuyapi-cloud-configuration',{
+    category: 'config',
+    color: '#a6bbcf',
+    defaults: {
+        name: { value: "Configuration Name" },
+        key: { value: "", required: true },
+        secret: { value: "", required: true },
+        secret2: { value: "", required: true },
+        certSign: { value: "", required: true },
+        apiEtVersion: { value: "0.0.1", required: true },
+        region: { value: "AZ", required: true },
+        email: { value: "", required: true },
+        password: { value: "", required: true },
+    },
+    icon: "white-globe.png",
+    label: function() {
+        return this.name;
+    },
+  });
+
+  RED.nodes.registerType('tuyapi-cloud-request',{
+    category: 'function',
+    color: '#a6bbcf',
+    defaults: {
+        name: { value:"Tuya API Request" },
+        config: { value:"", type: "tuyapi-cloud-configuration" },
+    },
+    inputs: 1,
+    outputs: 1,
+    icon: "white-globe.png",
+    label: function() {
+        return this.name||"Tuya API Request";
+    }
+  });
+</script>
+
+<script type="text/x-red" data-template-name="tuyapi-cloud-configuration">
+  <div class="form-row">
+      <label for="node-config-input-name"><i class="icon-tag"></i> Name</label>
+      <input type="text" id="node-config-input-name" placeholder="Name">
+  </div>
+  <div class="form-row">
+      <label for="node-config-input-key"><i class="fa fa-key"></i> Key</label>
+      <input type="text" id="node-config-input-key" placeholder="Key">
+  </div>
+  <div class="form-row">
+    <label for="node-config-input-secret"><i class="fa fa-user-secret"></i> Secret</label>
+    <input type="text" id="node-config-input-secret" placeholder="Secret">
+  </div>
+  <div class="form-row">
+    <label for="node-config-input-secret2"><i class="fa fa-user-secret"></i> Secret2</label>
+    <input type="text" id="node-config-input-secret2" placeholder="Secret2">
+  </div>
+  <div class="form-row">
+    <label for="node-config-input-secret2"><i class="icon-certificate"></i> Cert Sign</label>
+    <input type="text" id="node-config-input-certSign" placeholder="Certificate Signature">
+  </div>
+  <div class="form-row">
+    <label for="node-config-input-apiEtVersion"><i class="fa fa-code-fork"></i> API Version</label>
+    <input type="text" id="node-config-input-apiEtVersion" placeholder="0.0.1">
+  </div>
+  <div class="form-row">
+    <label for="node-config-input-region"><i class="icon-flag"></i> Region</label>
+    <select id="node-config-input-region">
+      <option value="AZ">America</option>
+      <option value="AY">Asia</option>
+      <option value="EU">Europe</option>
+    </select> 
+  </div>
+  <div class="form-row">
+    <label for="node-config-input-email"><i class="icon-envelope"></i> Email</label>
+    <input type="text" id="node-config-input-email" placeholder="email@example.com">
+  </div>
+  <div class="form-row">
+    <label for="node-config-input-password"><i class="icon-lock"></i> Password</label>
+    <input type="password" id="node-config-input-password" placeholder="Password">
+  </div>
+</script>
+
+<script type="text/x-red" data-help-name="tuyapi-cloud-configuration">
+  <p>Configuration for broadlink devices.</p>
+</script>
+
+<script type="text/x-red" data-template-name="tuyapi-cloud-request">
+  <div class="form-row">
+    <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+    <input type="text" id="node-input-name" placeholder="Name">
+    <label for="node-input-device"><i class="icon-tag"></i> Configuration</label>
+    <input type="text" id="node-input-config" placeholder="Credentials">
+  </div>
+</script>
+
+<script type="text/x-red" data-help-name="tuyapi-cloud-request">
+  <p>Tuya API Cloud Request</p>
+  <h3>Inputs</h3>
+  <dl class="message-properties">
+    <dt>payload
+      <span class="property-type">object</span>
+    </dt>
+    <dd> Payload object consisting of the various properties: </dd>
+    <dt>payload.action <span class="property-type">string</span></dt>
+    <dd> API action to invoke (for example, 'tuya.cloud.device.token.create') (see <a href="https://docs.tuya.com/en/cloudapi/appAPI/index.html">docs</a> for action list).</dd>
+    <dt class="optional">payload.group <span class="property-type">string</span></dt>
+    <dd> Group ID URL GET param</dd>
+    <dt class="optional">payload.data <span class="property-type">object</span></dt>
+    <dd> data to send in the request body</dd>
+  </dl>
+
+  <h3>Outputs</h3>
+  <ol class="node-ports">
+    <li>Standard output
+      <dl class="message-properties">
+        <dt>payload <span class="property-type">string</span></dt>
+        <dd>the standard output of the command.</dd>
+      </dl>
+    </li>
+  </ol>
+
+  <h3>Details</h3>
+  <p><code>msg.payload</code> contains the parameters required for the Tuya API Cloud API. </p>
+  
+  <h3>References</h3>
+  <ul>
+    <li><a href="https://github.com/TuyaAPI/cloud">TuyaAPI Cloud NodeJS Wrapper docs</a> - The NodeJS library used by this project for talking to the Tuya Cloud API</li>
+    <li><a href="https://docs.tuya.com/en/cloudapi/appAPI/index.html">Tuya Cloud API docs</a> - Official Tuya API documentation</li>
+  </ul>
+</script>

@@ -1,0 +1,9 @@
+# Source directory
+src/
+
+# Source configuration files
+tsconfig.json
+tslint.json
+
+# Test Files
+**/__tests__/**
