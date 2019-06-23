@@ -52,8 +52,8 @@ module.exports = (RED) => {
       });
 
     node.on('input', async (msg) => {
-      const { action, group: gid, data } = msg.payload;
-      msg.payload = await api.request({ action, gid, data }).catch((e) => {
+      const { action, group: gid, requireSID, data } = msg.payload;
+      msg.payload = await api.request({ action, gid, data, requireSID }).catch((e) => {
         node.error(`Error Requesting: ${JSON.stringify(e)}`);
       });
       return node.send(msg);
@@ -64,57 +64,3 @@ module.exports = (RED) => {
   RED.nodes.registerType('tuyapi-cloud-request', request);
   RED.nodes.registerType('tuyapi-cloud-configuration', configuration);
 };
-
-// const apiKeys = require('./keys.json')
-// let api = new TuyaCloud({key: apiKeys.key,
-//                      secret: apiKeys.secret,
-//                      secret2: apiKeys.secret2,
-//                      certSign: apiKeys.certSign,
-//                      apiEtVersion: '0.0.1',
-//                      region: 'AZ'});
-
-// api.loginEx({email: "admin@zyrorl.com", password: "c*3&zUrV&GUM"}).then(async sid => {
-//   console.log(sid);
-
-//   api.request({action: 'tuya.m.location.list'}).then(async groups => {
-//     for (const group of groups) {
-//       // Get device list
-//       api.request({action: 'tuya.m.my.group.device.list', gid: group.groupId}).then(async devicesArr => {
-//         for (const device of devicesArr) {
-//            console.log('group: "%s"\tdevice: "%s"\tdevId: "%s"', group.name, device.name, device.devId);
-//         }
-//       });
-//       // Get Unlock Password
-//       api.request({action: 'tuya.m.device.lock.dynapwd.get', gid: group.groupId, data: {
-//         "devId":"73042804807d3a5fe22b","gwId":"73042804807d3a5fe22b"
-//       }}).then(async devicesArr => {
-//         console.dir(devicesArr);
-//       });
-//       // Alarm List
-//       // api.request({action: 'm.smart.scale.history.get.list', gid: group.groupId, data: {
-//       //   "devId":"73042804807d3a5fe22b","dpIds":["8"],"gwId":"73042804807d3a5fe22b","limit":50,"offset":0
-//       // }}).then(async devicesArr => {
-//       //   console.dir(devicesArr, { depth: 10 });
-//       // });
-//       // Door Bell Rang
-//       // api.request({action: 'm.smart.scale.history.get.list', gid: group.groupId, data: {
-//       //   "devId":"73042804807d3a5fe22b","dpIds":["19"],"gwId":"73042804807d3a5fe22b","limit":50,"offset":0
-//       // }}).then(async devicesArr => {tuya.m.my.group.device.list
-//       //   console.dir(devicesArr, { depth: 10 });
-//       // });
-//       // Unlock List
-//       // api.request({action: 'm.smart.scale.history.get.list', gid: group.groupId, data: {
-//       //   "devId":"73042804807d3a5fe22b","dpIds":[1,2,3,4,5,6,7,15,17],"gwId":"73042804807d3a5fe22b","limit":50,"offset":0
-//       // }}).then(async devicesArr => {
-//       //   console.dir(devicesArr, { depth: 10 });
-//       // });
-
-//          // Battery State
-//          api.request({action: 'm.smart.scale.history.get.list', gid: group.groupId, data: {
-//           "devId":"73042804807d3a5fe22b","dpIds":[11],"gwId":"73042804807d3a5fe22b","limit":1,"offset":0
-//         }}).then(async devicesArr => {
-//           console.dir(devicesArr, { depth: 10 });
-//         });
-//     }
-//   });
-// });

@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+
+- Support for the `requireSID` parameter, allowing for requests to not send the session id (Defaults to `true`)
+
+### Updated
+
+- Updated `package.json` to include repository info, bugs etc entries
+- `README.md` updated to add package version in the version icon
+
 ## [0.1.1][] - 2019-06-22
 
 ### Updated
